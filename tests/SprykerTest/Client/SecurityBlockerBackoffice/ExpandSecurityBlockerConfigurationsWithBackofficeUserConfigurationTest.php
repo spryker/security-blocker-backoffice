@@ -32,9 +32,6 @@ class ExpandSecurityBlockerConfigurationsWithBackofficeUserConfigurationTest ext
      */
     protected SecurityBlockerBackofficeClientTester $tester;
 
-    /**
-     * @return void
-     */
     public function testExpandSecurityBlockerConfigurationsWithBackofficeUserConfigurationShouldReturnCorrectSettingTransfers(): void
     {
         // Act

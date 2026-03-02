@@ -16,9 +16,6 @@ use Spryker\Client\SecurityBlockerBackoffice\Expander\BackofficeConfigurationSet
  */
 class SecurityBlockerBackofficeFactory extends AbstractFactory
 {
-    /**
-     * @return \Spryker\Client\SecurityBlockerBackoffice\Expander\BackofficeConfigurationSettingsExpanderInterface
-     */
     public function createBackofficeConfigurationSettingsExpander(): BackofficeConfigurationSettingsExpanderInterface
     {
         return new BackofficeConfigurationSettingsExpander(

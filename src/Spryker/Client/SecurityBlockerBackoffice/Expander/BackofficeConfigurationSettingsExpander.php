@@ -17,9 +17,6 @@ class BackofficeConfigurationSettingsExpander implements BackofficeConfiguration
      */
     protected SecurityBlockerBackofficeConfig $securityBlockerBackofficeConfig;
 
-    /**
-     * @param \Spryker\Client\SecurityBlockerBackoffice\SecurityBlockerBackofficeConfig $securityBlockerBackofficeConfig
-     */
     public function __construct(SecurityBlockerBackofficeConfig $securityBlockerBackofficeConfig)
     {
         $this->securityBlockerBackofficeConfig = $securityBlockerBackofficeConfig;
