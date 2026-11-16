@@ -29,4 +29,20 @@ class SecurityBlockerBackofficeClient extends AbstractClient implements Security
             ->createBackofficeConfigurationSettingsExpander()
             ->expand($securityBlockerConfigurationSettingsTransfers);
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param array<string, \Generated\Shared\Transfer\SecurityBlockerLoginRealmConfigurationTransfer> $securityBlockerLoginRealmConfigurationTransfers
+     *
+     * @return array<string, \Generated\Shared\Transfer\SecurityBlockerLoginRealmConfigurationTransfer>
+     */
+    public function expandSecurityBlockerLoginRealmConfigurationsWithUserLoginRealmConfiguration(array $securityBlockerLoginRealmConfigurationTransfers): array
+    {
+        return $this->getFactory()
+            ->createUserLoginRealmConfigurationExpander()
+            ->expand($securityBlockerLoginRealmConfigurationTransfers);
+    }
 }

@@ -27,9 +27,6 @@ class ExpandSecurityBlockerConfigurationsWithBackofficeUserConfigurationTest ext
      */
     protected const SECURITY_BLOCKER_ENTITY_TYPE = 'back-office-user';
 
-    /**
-     * @var \SprykerTest\Client\SecurityBlockerBackoffice\SecurityBlockerBackofficeClientTester
-     */
     protected SecurityBlockerBackofficeClientTester $tester;
 
     public function testExpandSecurityBlockerConfigurationsWithBackofficeUserConfigurationShouldReturnCorrectSettingTransfers(): void

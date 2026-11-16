@@ -1,0 +1,204 @@
+# yaml-language-server: $schema=../../../Configuration/resources/configuration/configuration-schema-v1.json
+features:
+    - key: security
+      name: Security
+      description: Protection of the Storefront, Back Office and Merchant Portal login forms.
+      enabled: true
+      order: 90
+      tabs:
+          - key: login_lock
+            name: Login Lock
+            description: When failed logins lock an account or make the login forms ask for a security check (CAPTCHA). A locked account cannot log in, even with the correct password, until the lock ends.
+            enabled: true
+            order: 20
+            groups:
+                - key: user
+                  name: User Accounts
+                  description: Back Office, Merchant Portal and agent accounts, for every login form and login API of a user.
+                  enabled: true
+                  order: 10
+                  scopes:
+                      - global
+                  settings:
+                      - key: number_of_failed_attempts
+                        name: Lock after Failed Attempts
+                        description: Failed logins to one user account, from any IP address and any login form, after which the account is locked. A whole number from 1 to 100.
+                        type: integer
+                        default_value: 9
+                        enabled: true
+                        secret: false
+                        storefront: true
+                        order: 0
+                        scopes:
+                            - global
+                        constraints:
+                            - type: required
+                              message: Enter a whole number from 1 to 100.
+                            - type: regex
+                              message: Enter a whole number from 1 to 100.
+                              options:
+                                  pattern: '^[0-9]+$'
+                            - type: min
+                              message: Enter a whole number from 1 to 100.
+                              options:
+                                  min: 1
+                            - type: max
+                              message: Enter a whole number from 1 to 100.
+                              options:
+                                  max: 100
+                      - key: counting_window
+                        name: Counting Window (Minutes)
+                        description: Minutes in which the failed logins to one user account are counted for the lock and for the security check per account, starting with the first one. A whole number from 1 to 1440.
+                        type: integer
+                        default_value: 15
+                        enabled: true
+                        secret: false
+                        storefront: true
+                        order: 10
+                        scopes:
+                            - global
+                        constraints:
+                            - type: required
+                              message: Enter a whole number from 1 to 1440.
+                            - type: regex
+                              message: Enter a whole number from 1 to 1440.
+                              options:
+                                  pattern: '^[0-9]+$'
+                            - type: min
+                              message: Enter a whole number from 1 to 1440.
+                              options:
+                                  min: 1
+                            - type: max
+                              message: Enter a whole number from 1 to 1440.
+                              options:
+                                  max: 1440
+                      - key: lock_duration
+                        name: Lock Duration (Minutes)
+                        description: Minutes a locked user account stays locked. A whole number from 1 to 1440.
+                        type: integer
+                        default_value: 6
+                        enabled: true
+                        secret: false
+                        storefront: true
+                        order: 20
+                        scopes:
+                            - global
+                        constraints:
+                            - type: required
+                              message: Enter a whole number from 1 to 1440.
+                            - type: regex
+                              message: Enter a whole number from 1 to 1440.
+                              options:
+                                  pattern: '^[0-9]+$'
+                            - type: min
+                              message: Enter a whole number from 1 to 1440.
+                              options:
+                                  min: 1
+                            - type: max
+                              message: Enter a whole number from 1 to 1440.
+                              options:
+                                  max: 1440
+                      - key: challenge_account_number_of_failed_attempts
+                        name: Security Check after Failed Attempts per Account
+                        description: Failed logins to one user account, from any IP address, after which the Back Office, Merchant Portal and agent logins ask for a security check (CAPTCHA) while the CAPTCHA is on in the After Failed Attempts mode (Security, CAPTCHA tab). If this number is not below the lock, the security check comes one login before the lock. A whole number from 1 to 10.
+                        type: integer
+                        default_value: 3
+                        enabled: true
+                        secret: false
+                        storefront: true
+                        order: 30
+                        scopes:
+                            - global
+                        constraints:
+                            - type: required
+                              message: Enter a whole number from 1 to 10.
+                            - type: regex
+                              message: Enter a whole number from 1 to 10.
+                              options:
+                                  pattern: '^[0-9]+$'
+                            - type: min
+                              message: Enter a whole number from 1 to 10.
+                              options:
+                                  min: 1
+                            - type: max
+                              message: Enter a whole number from 1 to 10.
+                              options:
+                                  max: 10
+                      - key: challenge_ip_number_of_failed_attempts
+                        name: Security Check after Failed Attempts per IP Address
+                        description: Failed user logins from one IP address after which the Back Office, Merchant Portal and agent logins ask for a security check (CAPTCHA) while the CAPTCHA is on in the After Failed Attempts mode (Security, CAPTCHA tab). If this number is not below the lock of that IP address, the security check comes one login before the lock. Whether the CAPTCHA is on or off, only this many failed logins from one IP address count toward the limit across all accounts. 0 turns both off, for example when all users reach the shop through one proxy IP address. A whole number from 0 to 1000.
+                        type: integer
+                        default_value: 5
+                        enabled: true
+                        secret: false
+                        storefront: true
+                        order: 40
+                        scopes:
+                            - global
+                        constraints:
+                            - type: required
+                              message: Enter a whole number from 0 to 1000.
+                            - type: regex
+                              message: Enter a whole number from 0 to 1000.
+                              options:
+                                  pattern: '^[0-9]+$'
+                            - type: min
+                              message: Enter a whole number from 0 to 1000.
+                              options:
+                                  min: 0
+                            - type: max
+                              message: Enter a whole number from 0 to 1000.
+                              options:
+                                  max: 1000
+                      - key: challenge_all_accounts_number_of_failed_attempts
+                        name: Security Check after Failed Attempts across All Accounts
+                        description: Failed user logins across all accounts within the time window below, after which every Back Office, Merchant Portal and agent login asks for a security check (CAPTCHA) while the CAPTCHA is on in the After Failed Attempts mode (Security, CAPTCHA tab). This slows down attacks that try a few passwords on many accounts. Whether the CAPTCHA is on or off, reaching this number writes an entry to the security audit log while that log is enabled. 0 turns both off. A whole number from 0 to 100000.
+                        type: integer
+                        default_value: 30
+                        enabled: true
+                        secret: false
+                        storefront: true
+                        order: 50
+                        scopes:
+                            - global
+                        constraints:
+                            - type: required
+                              message: Enter a whole number from 0 to 100000.
+                            - type: regex
+                              message: Enter a whole number from 0 to 100000.
+                              options:
+                                  pattern: '^[0-9]+$'
+                            - type: min
+                              message: Enter a whole number from 0 to 100000.
+                              options:
+                                  min: 0
+                            - type: max
+                              message: Enter a whole number from 0 to 100000.
+                              options:
+                                  max: 100000
+                      - key: challenge_all_accounts_time_window
+                        name: Time Window across All Accounts (Minutes)
+                        description: Minutes in which the failed user logins across all accounts are counted for the security check and the audit log entry, starting with the first one. A whole number from 1 to 60.
+                        type: integer
+                        default_value: 5
+                        enabled: true
+                        secret: false
+                        storefront: true
+                        order: 60
+                        scopes:
+                            - global
+                        constraints:
+                            - type: required
+                              message: Enter a whole number from 1 to 60.
+                            - type: regex
+                              message: Enter a whole number from 1 to 60.
+                              options:
+                                  pattern: '^[0-9]+$'
+                            - type: min
+                              message: Enter a whole number from 1 to 60.
+                              options:
+                                  min: 1
+                            - type: max
+                              message: Enter a whole number from 1 to 60.
+                              options:
+                                  max: 60

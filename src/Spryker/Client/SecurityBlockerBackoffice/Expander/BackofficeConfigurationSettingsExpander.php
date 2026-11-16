@@ -12,9 +12,6 @@ use Spryker\Client\SecurityBlockerBackoffice\SecurityBlockerBackofficeConfig;
 
 class BackofficeConfigurationSettingsExpander implements BackofficeConfigurationSettingsExpanderInterface
 {
-    /**
-     * @var \Spryker\Client\SecurityBlockerBackoffice\SecurityBlockerBackofficeConfig
-     */
     protected SecurityBlockerBackofficeConfig $securityBlockerBackofficeConfig;
 
     public function __construct(SecurityBlockerBackofficeConfig $securityBlockerBackofficeConfig)

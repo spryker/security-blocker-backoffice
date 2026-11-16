@@ -1,6 +1,7 @@
 namespace: SecurityBlockerBackoffice
 include:
     - tests/SprykerTest/Client/SecurityBlockerBackoffice
+    - tests/SprykerTest/Zed/SecurityBlockerBackoffice
 paths:
     tests: tests
     output: tests/_output

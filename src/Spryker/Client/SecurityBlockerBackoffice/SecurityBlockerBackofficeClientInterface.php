@@ -20,4 +20,17 @@ interface SecurityBlockerBackofficeClientInterface
      * @return array<string, \Generated\Shared\Transfer\SecurityBlockerConfigurationSettingsTransfer>
      */
     public function expandSecurityBlockerConfigurationsWithBackofficeUserConfiguration(array $securityBlockerConfigurationSettingsTransfers): array;
+
+    /**
+     * Specification:
+     * - Expands the login realm configurations with the user realm, indexed by `SecurityBlockerBackofficeConfig::LOGIN_REALM_USER`.
+     * - Takes the thresholds from `SecurityBlockerBackofficeConfig::getUserLoginRealmConfiguration()`.
+     *
+     * @api
+     *
+     * @param array<string, \Generated\Shared\Transfer\SecurityBlockerLoginRealmConfigurationTransfer> $securityBlockerLoginRealmConfigurationTransfers
+     *
+     * @return array<string, \Generated\Shared\Transfer\SecurityBlockerLoginRealmConfigurationTransfer>
+     */
+    public function expandSecurityBlockerLoginRealmConfigurationsWithUserLoginRealmConfiguration(array $securityBlockerLoginRealmConfigurationTransfers): array;
 }

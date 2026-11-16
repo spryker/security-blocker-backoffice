@@ -10,6 +10,8 @@ namespace Spryker\Client\SecurityBlockerBackoffice;
 use Spryker\Client\Kernel\AbstractFactory;
 use Spryker\Client\SecurityBlockerBackoffice\Expander\BackofficeConfigurationSettingsExpander;
 use Spryker\Client\SecurityBlockerBackoffice\Expander\BackofficeConfigurationSettingsExpanderInterface;
+use Spryker\Client\SecurityBlockerBackoffice\Expander\UserLoginRealmConfigurationExpander;
+use Spryker\Client\SecurityBlockerBackoffice\Expander\UserLoginRealmConfigurationExpanderInterface;
 
 /**
  * @method \Spryker\Client\SecurityBlockerBackoffice\SecurityBlockerBackofficeConfig getConfig()
@@ -21,5 +23,10 @@ class SecurityBlockerBackofficeFactory extends AbstractFactory
         return new BackofficeConfigurationSettingsExpander(
             $this->getConfig(),
         );
+    }
+
+    public function createUserLoginRealmConfigurationExpander(): UserLoginRealmConfigurationExpanderInterface
+    {
+        return new UserLoginRealmConfigurationExpander($this->getConfig());
     }
 }

@@ -7,4 +7,15 @@
         <property name="blockFor" type="int"/>
     </transfer>
 
+    <transfer name="SecurityBlockerLoginRealmConfiguration" strict="true">
+        <property name="realm" type="string"/>
+        <property name="accountNumberOfAttempts" type="int"/>
+        <property name="accountTtl" type="int"/>
+        <property name="accountBlockFor" type="int"/>
+        <property name="accountChallengeNumberOfAttempts" type="int"/>
+        <property name="ipChallengeNumberOfAttempts" type="int"/>
+        <property name="globalChallengeNumberOfAttempts" type="int"/>
+        <property name="globalTtl" type="int"/>
+    </transfer>
+
 </transfers>
